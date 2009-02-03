@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" py:strip="">
+ 
+ <div id="about">
+   <p>
+     <img  src="${site.about_image}" height="180px" width="130px" />
+	  <span>
+	    ${site.description}
+	  </span>
+   </p> 
+   <br style="clear:both;" />                     
+ </div>   
+ 
+ <div id="contact">
+       <p>
+         <dl>
+           <dt>Email:</dt>
+           <dd><a href="mailto:${site.email}">${site.email}</a></dd>
+           <dt>LinkedIn: </dt>
+           <dd>&nbsp;&nbsp;<a href="http://www.linkedin.com/in/carlosgabaldon" title="Resume">Resume</a></dd>
+           <dt>GitHub: </dt>
+            <dd>&nbsp;&nbsp;<a href="http://github.com/CarlosGabaldon" title="Repos">Repos</a></dd>
+            <dt>Twitter: </dt>
+              <dd>&nbsp;&nbsp;<a href="http://twitter.com/carlosgabaldon" title="twitter">Profile</a></dd>
+            
+            
+         </dl>              
+       </p>  
+ </div>
+
+ <h1><a href="http://code.carlosgabaldon.com">codestuffs</a></h1>
+
+<br/>
+ <h2>Tagged</h2>
+ ${ET(tags_widget.display(tags=tags, site=site))}
+
+<br/>
+ 
+ <h2>Buzz</h2>
+${ET(recent_comments_widget.display(recent_comments=recent_comments, site=site))}
+
+
+<!-- <h2>Pages</h2>
+ ${ET(pages_widget.display(pages=pages, site=site))}
+ -->
+ <br/>
+ 
+ <a href=" http://peepcode.com">
+   <img src="http://topfunky.com/clients/peepcode/adverts/peepcode-120x90.png"/> </a>
+ 
+
+ 
+ <div id="photos">
+ <h2><a href="http://flickr.com/photos/carlosgabaldon">Photos</a></h2>
+        <script src="http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=random&amp;size=s&amp;layout=x&amp;source=user_set&amp;user=33766791%40N00&amp;set=72157600420259622&amp;context=in%2Fset-72157600420259622%2F" type="text/javascript">
+        </script>
+ </div>
+  <div py:for="badge in site.badges" >
+	${ET(badge_widget.display(badge=badge))}
+	<br/>
+ </div>
+ 
+ 
+ ${ET(admin_widget.display(site=site))}
+</div>

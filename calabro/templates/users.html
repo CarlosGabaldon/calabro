@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="../themes/${site.theme}/master.html" />
+<head>
+    <title >${site.title} - ${site.subtitle}</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" py:replace="''"/>
+
+</head>
+<body>
+	<div id="users" >
+	     <h4><a href="/${site.name}/users/new">New User</a></h4>
+		<h3>${site.title} users</h3>
+		<ul py:for="user in users">
+			<li><a  href="mailto:${user.email_address}">${user.display_name}</a></li>
+		</ul>
+    </div>
+	
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" py:replace="''"/>
+<title>Calabro</title>
+</head>
+<body>
+	
+	<div id="site_list" style="float:left; width: 200px">
+		<h3>Calabro Sites</h3>
+		<ul py:for="site in sites">
+			<li><a title="${site.subtitle}" href="/${site.name}">${site.title}</a></li>
+		</ul>
+	</div>
+	<div id="new_site" style="float:right; width: 600px">
+		<h3>Sign up for your Calabro site</h3>
+		<form id="new_site-form" method="post" action="create_site">
+		
+		  <p><label for="title"><small>Name</small></label><br/><input type="text" id="name" name="name" value="" /></p>
+		  <p><label for="title"><small>Title</small></label><br/><input type="text" id="title" name="title" value="" /></p>
+		  <p><label for="user"><small>SubTitle</small></label><br/><input type="text" id="subtitle" name="subtitle" value="" /></p>
+		  <p><label for="user"><small>Image</small></label><br/><input type="text" id="about_image" name="about_image" value="" /></p>
+	      <p><label for="user"><small>Email</small></label><br/><input type="text" id="email" name="email" value="" /></p>
+		  <p><label for="user"><small>Posts per page</small></label><br/><input type="text" id="posts_per_page" name="posts_per_page" value="" /></p>
+		  <p><label for="user"><small>URL</small></label><br/><input type="text" id="url" name="url" value="" /></p>
+		  <p>
+    	          <label for="user"><small>Theme</small></label><br/>
+    	          <select id="theme" name="theme" >
+    	              <div py:strip="" py:for="t in themes">
+                          <option value ="${t.name}">${t.name}</option>
+                      </div>
+                </select> 
+    	  </p>
+		  
+		  <p>
+			<label for="user"><small>Description</small></label><br/>
+			<textarea name="description" id="description"  cols="40" rows="10"></textarea>
+		  </p>
+		  
+		  <p>
+		      <div id="new_user" >
+          		<h3>Admin user</h3>
+          		  <p><label for="title"><small>User Name</small></label><br/><input type="text" id="user_name" name="user_name" value="" /></p>
+          		  <p><label for="user"><small>Email</small></label><br/><input type="text" id="email_address" name="email_address" value="" /></p>
+          	      <p><label for="user"><small>Display Name</small></label><br/><input type="text" id="display_name" name="display_name" value="" /></p>
+          	      <p><label for="user"><small>Password</small></label><br/><input type="password" id="password" name="password" value="" /></p>
+          	      <p>
+          	          <label for="user"><small>Group</small></label><br/>
+          	          <select id="groups" name="groups" multiple="true" py:for="group in groups">
+                          <option value ="${group.id}">${group.display_name}</option>
+                        </select> 
+          	      </p>
+              </div>
+		  </p>
+		  
+		  <p><input type="submit" value="Create my Calabro site"  /></p>
+		</form>
+	</div>	
+		
+		
+</body>
+</html>

@@ -1,0 +1,66 @@
+<?python 
+  
+  from textile                import textile
+  from cgi                    import escape
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="../themes/${site.theme}/master.html" />
+<head>
+    <title >${site.title} - ${site.subtitle}</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" py:replace="''"/>
+
+</head>
+<body>
+	<div id="entry">
+		<div class="entrytitle">
+			<h1><span py:content="post.title" /></h1>
+			
+		</div>
+		<div class="entrybody">
+	        <p>
+	           
+       			${ HTML(textile(escape(post.text).encode('utf-8'))) }
+	        </p>
+		</div>
+		<div class="entrymeta">
+			<div class="postinfo">
+				<span class="postedby" py:content="post.posted_by()" /> 
+				<span class="filedto"> on</span>
+				<span class="posteddate" py:content="post.posted_date('%B %d, %Y')"/> |
+				<span class="commentslink"><a href="/${site.name}/blog/post/${post.permalink}#comments">${post.number_of_comments()}</a></span> |
+				<span class="filedto"> Filed under</span>
+				<span py:for="tag in post.tags" >
+					&nbsp;<a title='${tag.name}' href='/${site.name}/blog/tags/${tag.name}'>${tag.name}</a>
+				</span>
+	        </div>
+		</div>
+		
+		<div class="commentsblock">
+			<h3 id="comments" py:content="post.number_of_comments()" /> 
+			<ol id="commentlist" class="commentlist">
+			   <div py:strip="" py:for="comment in post.comments" >
+				${ET(comment_widget.display(comment=comment))}
+			  </div>
+		
+			</ol>
+			<h3 id="respond">Post your comment</h3>
+			<form id="new_comment-form" method="post" action="add_comment">
+			  <input id="post_id" type="hidden" value="${post.id}" />
+			  <input id="site_name" type="hidden" value="${site.name}" />
+			  <p><input type="text" id="new_comment_name" name="new_comment_name" value="" /><label for="author"><small>Name (required)</small></label></p>
+			  <p><input type="text" id="new_comment_email" name="new_comment_email" value="" /><label for="email"><small>Email (will not be published)</small></label></p>
+			  <p><input type="text" id="new_comment_web_site" name="new_comment_website" value="" /><label for="url"><small>Website</small></label></p>
+
+			  <p><textarea name="new_comment_text" id="new_comment_text" cols="100%" rows="10"></textarea></p>
+			  <p><input name="submit" type="button" onclick="add_comment()" id="submit" value="Submit Comment"  /></p>
+			</form>
+		</div>
+		
+	</div>
+
+</body>
+</html>

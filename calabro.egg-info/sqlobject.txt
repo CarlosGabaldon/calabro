@@ -1,0 +1,2 @@
+db_module=calabro.model
+history_dir=$base/calabro/sqlobject-history

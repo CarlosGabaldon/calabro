@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:py="http://genshi.edgewall.org/" py:strip="">
+    <div class="inside">
+      
+       <div class="block first"> 
+      	    <h1>who am I..</h1>
+      	    <div id="about">
+                <p>
+                  <img  src="${site.about_image}" />
+        		  <span>
+        		    ${site.description}
+        		  </span>
+        		  <span style="font-size: 18px">
+        		      <a href="mailto:${site.email}">cgabaldon[at][cox][dot][net]</a>
+        		  </span>
+                </p> 
+
+            </div>
+            
+            <h1>what I am doing..</h1>
+             <span style="font-size: 24px">
+                 <a href="http://zenopsis.com" title="Summarize the web.">Zenopsis</a>
+            </span>
+             <span style="font-size: 12px">
+                 <a href="http://code.google.com/p/calabro/" title="My python based open source project that runs this blog.">calabro</a>
+             </span>
+             
+            <br/><br/>
+            
+            <h1>what is on this site..</h1>
+            ${ET(pages_widget.display(pages=pages, site=site))}
+
+            ${ET(admin_widget.display(site=site))}
+
+      	</div>
+
+
+          <div class="block"> 
+            <h1>what I am writing..</h1>
+           	${ET(tags_widget.display(tags=tags, site=site))}
+       	 	
+       	    <h1>what I have done..</h1>
+              <span style="font-size: 18px">
+                     <a href="http://www.linkedin.com/in/carlosgabaldon" title="Resume">Resume</a>
+                </span>
+             
+          </div>
+
+
+          <div class="block"> 
+              
+              <h1>what people are saying..</h1>
+            	${ET(recent_comments_widget.display(recent_comments=recent_comments, site=site))}
+
+             
+		  <div id="photos">
+              <h1><a href="http://flickr.com/photos/carlosgabaldon">what I am flicking..</a></h1>
+                 <script src="http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=random&amp;size=s&amp;layout=x&amp;source=user_set&amp;user=33766791%40N00&amp;set=72157600420259622&amp;context=in%2Fset-72157600420259622%2F" type="text/javascript">
+                 </script>
+          </div>
+
+      </div>
+
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/"
+      py:strip="">
+  <xi:include href="/templates/sitetemplate.html"><xi:fallback/></xi:include>
+
+  <head py:match="head" py:attrs="select('@*')">
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type"
+          py:replace="''" />
+    <title py:replace="''">${site.title} - ${site.subtitle}</title>
+    <meta py:replace="select('*')" />
+     <style type="text/css" media="screen">
+    	@import "/static/css/simpla_style.css";
+    	@import "/static/css/forms.css";
+    </style>
+    
+    <script src="/tg_widgets/turbogears/js/MochiKit.js" type="text/javascript"></script>
+    <script src="/static/javascript/post.js" type="text/javascript"></script>
+	
+	<script src="/static/javascript/thirdparty/prototype.js" type="text/javascript"></script>
+	
+	<script src="/static/javascript/thirdparty/scriptaculous.js" type="text/javascript"></script>
+	
+	<script src="/static/javascript/thirdparty/effects.js" type="text/javascript"></script>
+  </head>
+
+  <body py:match="body" py:attrs="select('@*')">
+      <div id="topshadow"><img src="/static/images/topshadow.png" alt="Shadow" /></div>
+	
+      <div id="wrap">
+          
+            <!-- HEADER-->
+            <div id="header">
+                <xi:include href="header.html">
+                </xi:include>
+            </div>
+            <!-- END HEADER -->
+
+            <!-- CONTENT -->
+            <div id="content">
+        	   <div py:if="tg_flash" class="flash" py:content="tg_flash"></div>
+
+        	    <div py:replace="select('*|text()')" />
+			
+            </div>
+            <!-- END CONTENT -->
+            
+            <!-- ANCILLARY CONTENT -->
+            <div id="sidebar">
+                <xi:include href="ancillary.html">
+                </xi:include>
+            </div>
+           <!-- END ANCILLARY CONTENT -->
+           
+      </div>
+      
+      <!-- FOOTER -->
+      <div id="footer"> 
+          <xi:include href="footer.html">
+          </xi:include>
+     </div>
+     <!-- END FOOTER -->
+
+</body>
+
+</html>

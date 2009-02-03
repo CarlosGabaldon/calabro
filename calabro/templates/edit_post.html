@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="../themes/${site.theme}/master.html" />
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" py:replace="''"/>
+<title >${site.title} - ${site.subtitle}</title>
+</head>
+<body>
+	
+	<div id="edit_post" >
+		<h3>Edit Post</h3>
+		<form id="edit_post-form" class="form-large" method="post" action="/${site.name}/blog/update_post">
+		  <input type="hidden" id="post_id" name="post_id" value="${post.id}"/>
+          <input type="hidden" id="user_id" name="user_id"  value="${post.user.id}" />
+          <div>
+             <label for="title" accesskey="2">Article Title <span>(Be descriptive with the title.)</span></label>
+             <input type="text" id="title" name="title" class="form-text-variable" value="${post.title}" />
+          </div>
+            
+		  
+		  <div>
+              <label for="bodytext" accesskey="3">Article <span>(Write your blog article.)</span></label>
+               <textarea  id="text" name="text" cols="40" rows="30">${post.text}</textarea><br/>
+          </div>
+		  
+		  <div>
+              <label for="bodytext" accesskey="3">Tags <span>(Tags help people search your article.)</span></label>
+              <input type="text" id="tags" name="tags" class="form-text-variable" value="${post.tags_as_string()}" />
+          </div>
+		  
+		  <p><input type="submit" value="Submit"  class="submit-button" /></p>
+		</form>
+		
+	</div>
+
+</body>
+</html>

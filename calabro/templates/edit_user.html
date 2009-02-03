@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="../themes/${site.theme}/master.html" />
+<head>
+    <title >${site.title} - ${site.subtitle}</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" py:replace="''"/>
+
+</head>
+<body>
+	<div id="edit_user" >
+		<h3>Edit user</h3>
+		<form id="edit_user-form" method="post" action="update">
+		  <input type="hidden" id="user_id" name="user_id" value="${user.id}">
+		  <p><input type="text" id="user_name" name="user_name" value="${user.user_name}" /><label for="title"><small>User Name</small></label></p>
+		  <p><input type="text" id="email_address" name="email_address" value="${user.email_address}" /><label for="user"><small>Email</small></label></p>
+	      <p><input type="text" id="display_name" name="display_name" value="${user.display_name}" /><label for="user"><small>Display Name</small></label></p>
+	      <p><input type="password" id="password" name="password" value="${user.password}" /><label for="user"><small>Password</small></label></p>
+		  <p><input type="submit" value="Submit"  /></p>
+		</form>
+    </div>
+	
+</body>
+</html>

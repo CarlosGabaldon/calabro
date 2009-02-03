@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="../themes/${site.theme}/master.html" />
+<head>
+    <title >${site.title} - ${site.subtitle}</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" py:replace="''"/>
+
+</head>
+<body>
+    <div id="edit_site">
+    	<h3>Edit Site</h3>
+    	<form id="update_site-form" method="post" action="update_site">
+		
+    	  <p><label for="title"><small>Name</small></label><br/><input type="text" id="name" name="name" value="${site.name}" /></p>
+    	  <p><label for="title"><small>Title</small></label><br/><input type="text" id="title" name="title" value="${site.title}" /></p>
+    	  <p><label for="user"><small>SubTitle</small></label><br/><input type="text" id="subtitle" name="subtitle" value="${site.subtitle}" /></p>
+    	  <p><label for="user"><small>Image</small></label><br/><input type="text" id="about_image" name="about_image" value="${site.about_image}" /></p>
+          <p><label for="user"><small>Email</small></label><br/><input type="text" id="email" name="email" value="${site.email}" /></p>
+    	  <p><label for="user"><small>Posts per page</small></label><br/><input type="text" id="posts_per_page" name="posts_per_page" value="${site.posts_per_page}" /></p>
+    	  <p><label for="user"><small>URL</small></label><br/><input type="text" id="url" name="url" value="${site.url}" /></p>
+    	  <p>
+    	          <label for="user"><small>Theme</small></label><br/>
+    	          <select id="theme" name="theme" >
+    	              <div py:strip="" py:for="t in themes">
+                          <option value ="${t.name}">${t.name}</option>
+                      </div>
+                </select> 
+    	  </p>
+	  
+    	  <p>
+    		<label for="user"><small>Description</small></label><br/>
+    		<textarea name="description" id="description"  cols="40" rows="10">${site.description}</textarea>
+    	  </p>
+    	  <p><input type="submit" value="Submit"  /></p>
+    	</form>
+	</div>
+	
+	<div>
+		<h3>Badges</h3>
+		<ol id="badgelist" class="badgelist">
+		   <div py:for="badge in site.badges" >
+		    <li>
+		    ${badge.name}
+		    <br/>
+			${ET(badge_widget.display(badge=badge))}
+			</li>
+		  </div>
+
+		</ol>
+		<br/>
+		<h3 id="respond">Add badges</h3>
+		<form id="new_badge-form" method="post" action="add_badge">
+		  <input id="site_id" type="hidden" value="${site.id}" />
+		  <input id="site_name" type="hidden" value="${site.name}" />
+		  <p><label for="author"><small>Name:</small></label><br/><input type="text" id="new_badge_name" name="new_badge_name" value="" /></p>
+		  
+		  <p><label for="author"><small>HTML</small></label><br/><textarea name="new_badge_html" id="new_badge_html" cols="100%" rows="10"></textarea></p>
+		  <p><input name="submit" type="button" onclick="add_badge()" id="submit" value="Add badge"  /></p>
+		</form>
+	</div>
+		
+		
+		
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="../themes/${site.theme}/master.html" />
+<head>
+    <title>${site.title} - ${site.subtitle}</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" py:replace="''"/>
+
+
+
+	  <link rel="alternate" type="application/rss+xml" title="carlosgabaldon.com RSS Feed" href="http://feeds.feedburner.com/CarlosGabaldon" />
+</head>
+<body>
+	  <div id="posts">
+		${ET(posts_widget.display(posts=posts, site=site))}
+	  </div>
+	  
+	  <br/><br/><br/>
+	  <a href="/${site.name}/blog/archived">&laquo; Previous Entries</a>
+	      
+	      
+      <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+      </script>
+      <script type="text/javascript">
+      _uacct = "UA-2084051-1";
+      urchinTracker();
+      </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?python 
+  
+  from textile                import textile
+  from cgi                    import escape
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="../themes/${site.theme}/master.html" />
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" py:replace="''"/>
+<title>${page.title}</title>
+
+</head>
+<body>
+    	<div id="body">
+        ${ HTML(textile(escape(page.body).encode('utf-8'))) }
+ 		</div>
+
+	 <div id="edit" py:if="'admin' in tg.identity.groups">
+		<a href="/${site.name}/page/edit_page?name=${page.name}">Edit</a>
+	 </div>
+
+</body>
+</html>

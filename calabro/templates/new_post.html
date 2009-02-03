@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+  <xi:include href="../themes/${site.theme}/master.html" />
+<head>
+    <title >${site.title} - ${site.subtitle}</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" py:replace="''"/>
+
+</head>
+<body>
+	<div id="new_post" >
+		<h3>New Post</h3>
+		<form id="new_post-form" class="form-large" method="post" action="create_post">
+          <input type="hidden" id="user_id" name="user_id" value="${user.id}" />
+          <div>
+             <label for="title" accesskey="2">Article Title <span>(Be descriptive with the title.)</span></label>
+             <input type="text" id="title" name="title" class="form-text-variable" value="" /><br/>
+          </div>
+            
+		  
+		  <div>
+              <label for="bodytext" accesskey="3">Article <span>(Write your blog article.)</span></label>
+               <textarea name="text" id="text" cols="50" rows="80"></textarea><br/>
+          </div>
+		  
+		  <div>
+              <label for="bodytext" accesskey="3">Tags <span>(Tags help people search your article.)</span></label>
+              <input type="text" id="tags" name="tags" class="form-text-variable" value="" />
+          </div>
+		  
+		  <p><input type="submit" value="Submit"  class="submit-button" /></p>
+		</form>
+    </div>
+</body>
+</html>
